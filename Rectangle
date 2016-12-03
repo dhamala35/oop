@@ -1,0 +1,77 @@
+#include<iostream>
+
+using namespace std;
+
+class rectangle
+{
+    public:
+    int l,b;
+    
+    rectangle()    //default constructor
+    {
+        l=0;
+        b=0;
+    }
+    
+    rectangle(int length,int breadth)   //parameterised constructor
+    {
+        l=length;
+        b=breadth;
+    }
+
+    void getdata()
+    {
+        cout<<"Enter Length & Breadth"<<endl;
+        cin>>l>>b;
+    }
+    
+    friend rectangle operator +(rectangle r1,rectangle r2);
+    friend int operator ==(rectangle r1,rectangle r2);
+    friend ostream &operator<<(ostream &kout,rectangle ob);
+};
+
+rectangle operator+(rectangle r1,rectangle r2)
+{
+    rectangle temp;
+    
+    temp.l=r1.l+r2.l;
+    temp.b=r1.b+r2.b;
+    
+    cout<<"Area of Rect 1 : "<< r1.l*r1.b<<endl;
+    cout<<"Area of Rect 2 : "<< r2.l*r2.b<<endl;    
+    
+    cout<<"Perimeter of Rect 1 : "<< 2*(r1.l+r1.b)<<endl;
+    cout<<"Perimeter of Rect 2 : "<< 2*(r2.l+r2.b)<<endl;
+return temp;
+}
+
+int operator==(rectangle r1,rectangle r2)
+{
+    if(r1.l==r2.l && r1.b==r2.b)
+        cout<<"Rectangle Objects Are Equal"<<endl;
+    else
+        cout<<"Rectangle Objects Are Not Equal"<<endl;
+return 0;
+}
+
+ostream &operator<<(ostream &kout,rectangle ob)
+{
+    kout<<"Resultant Reactangle"<<endl;
+    kout<<"Length"<<ob.l<<endl;
+    kout<<"Breadth"<<ob.b<<endl;
+return kout;
+}
+
+int main()
+{
+    rectangle r1,r2,r3;
+    
+    r1.getdata();
+    r2.getdata();
+    
+    r3=r1+r2;
+    r2==r1;
+    
+    cout<<"SUM :"<<r3<<endl;
+    return 0;
+}
