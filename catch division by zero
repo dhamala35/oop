@@ -1,0 +1,28 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int a,b;
+	cout<<"Enter the values of a and b:\n";
+	cin>>a>>b;
+	try
+	{
+		if(b==0)
+		{
+			throw 1;
+		}
+		else
+		{
+			cout<<"The division of"<<a<<"\tand\t"<<b<<"is:\n"<<(a/b);
+			cout<<endl;
+		}
+	}
+	catch(int)
+	{
+		cout<<"ERROR!! EXCEPTION CAUGHT.";
+	}
+return 0;
+}
+
