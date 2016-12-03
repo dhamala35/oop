@@ -1,0 +1,36 @@
+#include<iostream>
+ using namespace std;
+template<class t>
+void bubble(t a[], int n)
+{
+int i, j;
+for(i=0;i<n-1;i++)
+{
+for(j=i+1;j<n;j++)
+{
+if(a[i]>a[j])
+{
+t temp;
+temp = a[i];
+a[i] = a[j];
+a[j] = temp;
+}
+}
+}
+}
+ 
+int main()
+{
+int a[6]={8,2,3,9,4,6};
+double b[5]={3.3,2.5,7.5,4.4,6};
+   
+bubble(a,6);
+cout<<"\nSorted Order Integers: ";
+for(int i=0;i<6;i++)
+cout<<a[i]<<"\t";
+bubble(b,5);
+cout<<"\nSorted Order double: ";
+for(int j=0;j<5;j++)
+cout<<b[j]<<"\t";
+}
+
