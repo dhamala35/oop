@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+class kdistance
+{
+int feet;
+int inch;
+public:
+kdistance()
+{
+feet=0;
+inch=0;
+}
+kdistance(int f,int i)
+{
+feet=f;
+inch=i;
+}
+
+
+kdistance operator ++()
+{
+++inch;
+if(inch>=12)
+{
+++feet;
+inch-=12;
+}
+return kdistance(feet,inch);
+}
+kdistance operator --()
+{
+kdistance d(feet,inch);
+--inch;
+if(inch>=12)
+{
+--feet;
+inch-=12;
+}
+return d;
+}
+void operator=(const kdistance& d)
+{
+feet=d.feet;
+inch=d.inch;
+}
+
+friend ostream& operator<<(ostream& kout,kdistance& d);
+} ;
+ostream& operator<<(ostream& kout,kdistance& d)
+{
+	kout<<"feet="<<d.feet<<"inches="<<d.inch<<endl;
+}
+int main()
+{
+ kdistance d1(11,10),d2(5,11),d3;
+
+++d1;
+cout<<d1;;
+++d1;
+cout<<d1;
+--d2;
+cout<<d2;
+--d2;
+cout<<d2;
+d3=d2;
+cout<<"first ditance";
+cout<<d3;
+return 0;
+}
