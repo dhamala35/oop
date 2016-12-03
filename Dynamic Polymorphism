@@ -1,0 +1,42 @@
+#include<iostream>
+
+using namespace std;
+class A
+{
+public:
+void display()
+{
+cout<<"display base\n";
+}
+virtual void show()
+{
+cout << "show Base \n";
+}
+};
+class B: public A
+{
+private:
+void display()
+{
+cout<<"display derieved\n";
+}
+void show()
+{
+cout << "show Derived \n";
+}
+};
+int main()
+{
+A a;
+B b;
+A *bptr;
+cout<<"bptr point to base\n";
+bptr=&a;
+bptr->display();
+bptr->show();
+cout<<"bptr points to der\n";
+bptr=&b;
+bptr->display();
+bptr-> show();
+
+}
