@@ -1,18 +1,17 @@
 #include<iostream>
 using namespace std;
-class matrix
+
+class Matrix
 {
+
 public:
-int a[10][10];
-int r,c;
-int i;
-int j;
-void getdata()
-{
-/*cout<<"Enter the rows and column of the matrix"<<endl;
-cin>>r;
-cin>>c;*/
-cout<<"enter the element of the matrix"<<endl;
+	int i,j;
+	int a[10][10];
+	
+
+	void getdata()
+	{
+cout<<"Enter the elements of the matrix: "<<endl;
 for(i=0;i<2;i++)
 {
 for(j=0;j<2;j++)
@@ -21,14 +20,7 @@ cin>>a[i][j];
 }
 }
 }
-matrix operator +(matrix m)
-{
-matrix temp;
-for(i=0;i < 2;i++)
-for(j=0;j < 2;j++)
-temp.a[i][j]=a[i][j]+m.a[i][j];
-return temp;
-}
+friend Matrix operator +(const Matrix &m, int x);
 void display()
 {
 for(i=0;i<2;i++)
@@ -41,20 +33,31 @@ cout<<endl;
 }
 }
 };
+
+
+Matrix operator +(const Matrix &m, int x)
+	{
+		Matrix temp;
+
+		for(int i=0;i<2;i++)
+		{
+			for(int j=0;j<2;j++)
+			{
+				temp.a[i][j] = x + m.a[i][j];
+			}
+		}
+
+		return temp;
+	}
+
 int main()
 {
-matrix m1;
-matrix m2;
-matrix m3;
-m2.getdata();
-cout<<"Enter the details of the matrix which you want to add"<<endl;
-m3.getdata();
-m1=m2+m3;
-m2.display();
-cout<<"\t";
-cout<<"  +  ";
-cout<<" \n";
-m3.display();
-cout<<endl;
-m1.display();
-}
+	Matrix m1,m2;
+	m1.getdata();
+	//cout<<"Enter the details of the matrix you want to add: "<<endl;
+	m2 = m1 + 2;
+	m2.display();
+
+
+	return 0;
+  }
